@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Form Validator</title>
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+	<body>
+		<div id="master-container">
+			<h2>Register With Us</h2>
+			<form autocomplete="off" id="form">
+				<ul class="formlist">
+					<li>
+						<span>Username</span> <br />
+						<input
+							type="text"
+							class="li-style"
+							id="username"
+							placeholder="Enter Name"
+							name="fname"
+						/>
+						<br />
+						<span class="error">Username is required!</span>
+					</li>
+
+					<li>
+						<span>Phone Number</span> <br />
+						<input
+							type="text"
+							class="li-style"
+							id="contact"
+							placeholder="Enter Mobile Number"
+							name="mob"
+						/><br />
+						<span class="error">Phone number is required!</span>
+					</li>
+
+					<li>
+						<span>Email ID</span> <br />
+						<input
+							type="email"
+							class="li-style"
+							id="email"
+							placeholder="Enter email ID"
+							name="email"
+						/><br />
+						<span class="error">Email ID is required!</span>
+					</li>
+
+					<li>
+						<span>Password</span> <br />
+						<input
+							type="password"
+							class="li-style"
+							id="password"
+							placeholder="Enter Password"
+							name="password"
+						/><br />
+						<span class="error">Password is required!</span>
+					</li>
+
+					<li>
+						<span>Confirm Password</span> <br />
+						<input
+							type="password"
+							class="li-style"
+							id="password2"
+							placeholder="Enter Password again"
+							name="confirm"
+						/><br />
+						<span class="error">Password is required!</span>
+					</li>
+				</ul>
+				<button class="submit">SUMBIT</button>
+			</form>
+		</div>
+		<script src="./script.js"></script>
+	</body>
+</html>
