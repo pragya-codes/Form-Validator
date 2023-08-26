@@ -14,25 +14,28 @@ function caps(input) {
 	return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
 function showerror(input, message) {
-	input.classList.add('error');
+	input.className = 'li-style error';
 	const errormsg = input.nextElementSibling.nextElementSibling;
-	errormsg.classList.add('showerr');
+	errormsg.className = 'error showerr';
 	errormsg.innerText = message;
 }
-function successful() {
-	username.classList.add('success');
+function successful(input, message) {
+	input.className = 'li-style success';
+	const successmsg = input.nextElementSibling.nextElementSibling;
+	successmsg.className = 'error';
+	// successmsg.innerText = message;
 }
 
 function checkrequired(arr) {
 	arr.forEach((input) => {
-		if (input.value.trim() === '') showerror(input);
+		if (input.value.trim() === '')
+			showerror(input, `${caps(input)} is required!`);
 	});
 }
 function checklength(input, min, max) {
-	// checkrequired();
 	if (input.value.length < min)
 		showerror(input, `${caps(input)} should be atleast ${min} characters.`);
-	//longer way commented - refactored above in one line
+	//longer way commented - refactored  in one line above
 	//{
 	// 	input.nextElementSibling.nextElementSibling.classList.add('showerr');
 	// 	input.nextElementSibling.nextElementSibling.innerText = `${caps(
@@ -41,23 +44,47 @@ function checklength(input, min, max) {
 	// }
 	else if (input.value.length > max)
 		showerror(input, `${caps(input)} should be only ${max} characters.`);
-	//longer way commented - refactored above in one line
+	//longer way commented - refactored  in one line above
 	// 	{
 	// 	input.nextElementSibling.nextElementSibling.classList.add('showerr');
 	// 	input.nextElementSibling.nextElementSibling.innerText = `${caps(
 	// 		input
 	// 	)} should be only ${max} characters.`;
 	// }
+	else successful(input);
+}
+
+function checkemail(input) {
+	const re =
+		/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+	if (re.test(input.value.trim())) {
+		successful(input);
+	} else showerror(input, `Email is not Valid.`);
+}
+function checkmobile(input) {
+	const re = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+	if (re.test(input.value.trim())) {
+		successful(input);
+	} else showerror(input, `${caps(input)} is not Valid.`);
+}
+
+function checkpass(p, p1) {
+	if (p.value.trim() !== p1.value.trim())
+		showerror(p1, `Password does not match.`);
+	else successful(p1);
 }
 
 function formvalid(e) {
 	e.preventDefault();
 
 	const inputarr = [username, contact, email, password, password2];
-	checkrequired(inputarr);
+
 	checklength(username, 3, 15);
 	checklength(pass, 6, 20);
 	checkemail(email);
+	checkmobile(contact);
+	checkpass(password, password2);
+	checkrequired(inputarr);
 }
 
 form.addEventListener('submit', formvalid);

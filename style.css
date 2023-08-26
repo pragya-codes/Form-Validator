@@ -16,7 +16,7 @@ h2 {
 	height: 100vh;
 	overflow: auto;
 
-	background-color: rgb(240, 240, 178);
+	background-color: #fffd8c;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -30,7 +30,6 @@ span {
 }
 .formlist li {
 	padding-bottom: 10px;
-	/* line-height: 2rem; */
 }
 
 .li-style {
@@ -40,18 +39,22 @@ span {
 	border-radius: 3px;
 }
 input {
-	outline: none;
+	/* outline: none; */
+	outline: 1px solid #040d12;
 	padding: 10px;
+	background-color: #fbf0b2;
 }
 
 ::placeholder {
-	color: rgb(0, 132, 255);
+	color: #040d12;
 	font-weight: bold;
 	opacity: 0.6;
 }
 
 .li-style.error {
+	outline: none;
 	border: 1px solid red;
+	box-shadow: 0px 0px 2px red;
 }
 
 span.error {
@@ -64,15 +67,22 @@ span.showerr {
 	visibility: visible;
 }
 
-#user.li-style.success {
-	border: 2px solid green;
+.li-style.success {
+	outline: none;
+	border: 1px solid green;
+	box-shadow: 0px 0px 2px green;
 }
+
+span.successmsg {
+	visibility: visible;
+}
+
 .submit {
 	height: 3rem;
 	width: 30rem;
 	margin-top: 1rem;
 	border: none;
-	background-color: rgb(19, 19, 19);
+	background-color: #040d12;
 	font-weight: bold;
 	color: white;
 	border-radius: 3px;
